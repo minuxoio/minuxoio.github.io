@@ -312,14 +312,6 @@ span.tc_space {
     opacity: 1;
   }
 }
-/* 磁片機相關內容統一居中 */
-.disk-drive,
-.disk {
-  position: absolute;
-  top: 56.5%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* 完全居中 */
-}
 .download-button {
   position: absolute;
   top: 90%;
@@ -337,11 +329,13 @@ span.tc_space {
 
 /* 磁片樣式 */
 .disk {
-  width: 202.7px;
-  height: 202.7px;
   position: absolute;
-  top: 51.7vh;
-  left: 50vw;
+  top: 48.9%;
+  left: 50%;
+
+  width: 200px;
+  height: 200px;
+
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -352,7 +346,7 @@ span.tc_space {
 
 .disk.show {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(2.5);
+  transform: translate(-50%, -50%) scale(2);
 }
 .spline-wrapper {
   position: absolute; /* 絕對定位 */

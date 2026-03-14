@@ -214,24 +214,24 @@ body {
 
 /* 下載50按鈕樣式 */
 .download-button {
-  display: none; /* 初始隱藏 */
+  display: none;
   position: absolute;
-  top: 88% !important; /* 根據需求調整位置 */
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 20px;
   color: rgb(39, 39, 39);
   cursor: pointer;
-}
 
-/* 下載按鈕初始樣式 */
-.download-button {
-  display: none;
   opacity: 0;
   transition: opacity 1s ease;
   animation: breathing 5s infinite;
 }
 
+.download-button.show {
+  display: block;
+  opacity: 1;
+}
 @keyframes typing {
   from {
     width: 0;
@@ -312,14 +312,7 @@ span.tc_space {
     opacity: 1;
   }
 }
-.download-button {
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%); /* 完全居中 */
-  transition: opacity 5.5s, transform 0.0002s ease;
-}
+
 /* 磁片機圖片 */
 .disk-drive {
   width: 20vw;

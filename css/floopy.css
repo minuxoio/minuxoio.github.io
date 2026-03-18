@@ -214,24 +214,24 @@ body {
 
 /* 下載50按鈕樣式 */
 .download-button {
-  display: none; /* 初始隱藏 */
+  display: none;
   position: absolute;
-  top: 88% !important; /* 根據需求調整位置 */
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 20px;
   color: rgb(39, 39, 39);
   cursor: pointer;
-}
 
-/* 下載按鈕初始樣式 */
-.download-button {
-  display: none;
   opacity: 0;
   transition: opacity 1s ease;
   animation: breathing 5s infinite;
 }
 
+.download-button.show {
+  display: block;
+  opacity: 1;
+}
 @keyframes typing {
   from {
     width: 0;
@@ -312,22 +312,7 @@ span.tc_space {
     opacity: 1;
   }
 }
-/* 磁片機相關內容統一居中 */
-.disk-drive,
-.disk {
-  position: absolute;
-  top: 56.5%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* 完全居中 */
-}
-.download-button {
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%); /* 完全居中 */
-  transition: opacity 5.5s, transform 0.0002s ease;
-}
+
 /* 磁片機圖片 */
 .disk-drive {
   width: 20vw;
@@ -337,11 +322,13 @@ span.tc_space {
 
 /* 磁片樣式 */
 .disk {
-  width: 202.7px;
-  height: 202.7px;
   position: absolute;
-  top: 51.7vh;
-  left: 50vw;
+  top: 48.9%;
+  left: 50%;
+
+  width: 200px;
+  height: 200px;
+
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -352,7 +339,7 @@ span.tc_space {
 
 .disk.show {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(2.5);
+  transform: translate(-50%, -50%) scale(2);
 }
 .spline-wrapper {
   position: absolute; /* 絕對定位 */

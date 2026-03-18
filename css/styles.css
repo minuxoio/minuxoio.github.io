@@ -9,9 +9,15 @@ body {
 }
 body {
   font-family: 
-      /* 英文字型優先順序 */ "Roboto Mono", "Helvetica", "Arial",
-    /* 中文字型優先順序 */ "Roboto Mono", "Noto Sans CJK TC", "PingFang TC",
-    "Microsoft JhengHei", /* 後備字型 */ sans-serif;
+      /* 英文字型優先順序 */
+    "Roboto Mono",
+    "Helvetica",
+    "Arial",
+    /* 中文字型優先順序 */ "Roboto Mono",
+    "Noto Sans CJK TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    /* 後備字型 */ sans-serif;
   background-color: #f4f4f4;
   /* <uniquifier>: Use a unique and descriptive class name*/
   /*<weight>: Use a value from 100 to 700*/
@@ -31,6 +37,16 @@ body {
     font-weight: weight;
     font-style: normal;
   }
+}
+
+.nav-right,
+.right-vol,
+.deco-text h4,
+.deco-text p,
+.logo,
+.album-container {
+  z-index: 2;
+  position: relative; /* z-index 必須搭配 position 才會生效 */
 }
 
 /* 右側導航樣式 */
@@ -73,6 +89,7 @@ body {
   top: 30vh; /* 與視窗頂部的間距 */
   right: 2vw; /* 與視窗右側的間距 */
   animation: breathing 5s infinite;
+  color: #b4422b;
 }
 
 .deco-text p {
@@ -113,8 +130,8 @@ body {
   width: 100vw;
   position: absolute;
   top: -5vh;
-  left: 30vw;
-  max-width: 50vw;
+  left: 20vw;
+  max-width: 70vw;
   /*clip-path: inset(30px 170px 40px 170px); */
   object-fit: cover; /* 確保圖片適應容器 */
   z-index: 0; /* 將圖片放到最底層 */
@@ -142,7 +159,9 @@ body {
   align-items: flex-start; /* 對齊容器頂部 */
   gap: 20px; /* 圖片與文字間隔 */
   height: calc(33.33% -2vh);
-  transition: transform 0.3s ease, opacity 0.7s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.7s ease;
 }
 
 .album-cover {
@@ -196,7 +215,9 @@ body {
   text-underline-offset: 10px;*/
   color: #5e5e5e;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.7s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.7s ease;
 }
 
 a {

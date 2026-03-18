@@ -1,8 +1,14 @@
 body {
   font-family: 
-        /* 英文字型優先順序 */ "Roboto Mono", "Helvetica",
-    "Arial", /* 中文字型優先順序 */ "Roboto Mono", "Noto Sans CJK TC",
-    "PingFang TC", "Microsoft JhengHei", /* 後備字型 */ sans-serif;
+        /* 英文字型優先順序 */
+    "Roboto Mono",
+    "Helvetica",
+    "Arial",
+    /* 中文字型優先順序 */ "Roboto Mono",
+    "Noto Sans CJK TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    /* 後備字型 */ sans-serif;
   background-color: #f4f4f4;
   /* <uniquifier>: Use a unique and descriptive class name*/
   /*<weight>: Use a value from 100 to 700*/
@@ -24,7 +30,6 @@ body {
   }
 }
 
-/* 右側導航樣式 */
 .nav-right {
   position: absolute; /* 使用絕對定位，控制在特定位置 */
   top: 4vh; /* 與視窗頂部的間距 */
@@ -38,21 +43,27 @@ body {
   max-height: 250px; /* 設定最大高度，保持比例 */
   object-fit: contain; /* 確保圖片完整顯示 */
 }
-
 .right-vol {
-  position: absolute; /* 使用絕對定位，控制在特定位置 */
-  top: 11vh; /* 與視窗頂部的間距 */
-  right: 2.5vw; /* 與視窗右側的間距 */
+  position: absolute;
+  top: 11.5vh; /* 根據需要調整位置 */
+  right: 4.7vw;
+  cursor: pointer; /* 鼠標變成指針 */
 }
 
-.right-vol .volume_icon {
-  margin-right: 10px;
-  max-width: 22px;
-  height: auto;
+.volume_icon {
+  width: 22px;
+  height: 22px;
 }
-.right-vol .arrow_icon {
-  max-width: 20px;
-  height: auto;
+.back-button {
+  position: absolute;
+  top: 11.5vh;
+  right: 2.4vw; /* 左側位置 */
+  cursor: pointer;
+}
+
+.back-button img {
+  width: 22px;
+  height: 22px;
 }
 
 .deco-text h4 {
@@ -127,7 +138,9 @@ body {
   flex-direction: column;
   align-items: flex-start; /* 對齊容器頂部 */
   gap: 40px; /* 圖片與文字間隔 */
-  transition: transform 0.3s ease, opacity 0.7s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.7s ease;
 }
 
 .album-cover {
@@ -215,7 +228,10 @@ body {
     text-underline-offset: 10px;*/
   color: #000000;
   opacity: 1;
-  transition: opacity 0.3s ease, transform 0.7s ease, color 0.1s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.7s ease,
+    color 0.1s ease;
 }
 
 a {

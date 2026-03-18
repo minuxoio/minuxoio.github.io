@@ -1,3 +1,12 @@
+html,
+body {
+  margin: 0; /* 移除邊距 */
+  padding: 0; /* 移除內邊距 */
+  overflow: hidden; /* 禁止滾動條出現 */
+  height: 100%; /* 覆蓋整個視窗 */
+  width: 100%;
+  box-sizing: border-box;
+}
 body {
   font-family: "Roboto Mono", "Noto Sans CJK TC";
 
@@ -6,18 +15,19 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
 .container {
-  position: relative;
+  position: absolute;
   width: 100vw;
   height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* 禁止滾動條 */
 }
 
 .barcode-container {
-  position: absolute;
-  margin-top: 8.5vh; /* 與視窗頂部的間距 */
-  margin-left: 2vw; /* 與視窗右側的間距 */
-  scale: (0.7);
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  left: -6.5vh; /* 與視窗頂部的間距 */
+  margin-top: 5.7vw; /* 與視窗右側的間距 */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +36,8 @@ body {
 
 .barcode {
   display: flex;
-  height: 150px;
+  height: 140px;
+  scale: 80%;
   align-items: flex-end;
 }
 
@@ -49,36 +60,38 @@ body {
   font-size: 30px;
 }
 
-.disk-drive {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .bottom-left {
-  position: absolute;
-  margin-top: 55vh; /* 與視窗頂部的間距 */
-  margin-left: 2vw; /* 與視窗右側的間距 */
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  top: 57vh; /* 與視窗頂部的間距 */
+  margin-left: 2.5vw; /* 與視窗右側的間距 */
   font-size: 11px;
 }
 
 .text-right {
-  position: absolute;
-  margin-top: 30vh; /* 與視窗頂部的間距 */
-  margin-left: 89vw; /* 與視窗右側的間距 */
-  font-size: 11px;
-  text-align: right;
+  display: inline-block;
+  text-align: right; /* 文字置右 */
+  font-size: 11px; /* 文字大小 */
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  top: 38vh; /* 與視窗頂部的間距 */
+  right: 2vw; /* 與視窗右側的間距 */
+  margin-inline: auto;
+  overflow: hidden;
+  /* Keeps on a single line */
+  white-space: nowrap;
+  /* The cursor */
+  /*border-right: 1px solid;
+      /* steps = number of characters */
+  animation: typing 8s steps(83) backwards;
 }
 
 .logo {
   position: absolute; /* 使用絕對定位，控制在特定位置 */
-  bottom: 4vh; /* 與視窗底部的間距 */
-  right: 2vw;
+  bottom: 3.5vh; /* 與視窗底部的間距 */
+  right: 2vw; /* 與視窗右側的間距 */
 }
 
 .logo img {
-  width: 150px; /* 讓圖片填滿容器的寬度 */
+  width: 260px; /* 讓圖片填滿容器的寬度 */
   max-width: none; /* 防止圖片過度縮放 */
   height: auto; /* 保持圖片的比例 */
 }
@@ -86,7 +99,7 @@ body {
 .runborder {
   position: absolute; /* 使用絕對定位，脫離文檔流 */
   top: 93.5%; /* 距離頂部 10% */
-  left: 2vw; /* 距離左側 2vw */
+  left: 2.5vw; /* 距離左側 2vw */
   width: 10vw;
 }
 
@@ -156,46 +169,39 @@ body {
 .nav-right {
   position: absolute; /* 使用絕對定位，控制在特定位置 */
   top: 4vh; /* 與視窗頂部的間距 */
-  right: 4vw; /* 與視窗右側的間距 */
+  right: 2vw; /* 與視窗右側的間距 */
 }
 
 .nav-right .nav-image {
-  width: 18vw; /* 圖片寬度設為視窗寬度的 x% */
+  width: 20vw; /* 圖片寬度設為視窗寬度的 x% */
   height: auto; /* 自動調整高度比例 */
   max-width: 250px; /* 設定最大寬度，避免圖片過大 */
   max-height: 250px; /* 設定最大高度，保持比例 */
   object-fit: contain; /* 確保圖片完整顯示 */
 }
-
 .right-vol {
-  position: absolute; /* 使用絕對定位，控制在特定位置 */
-  top: 11vh; /* 與視窗頂部的間距 */
-  right: 4vw; /* 與視窗右側的間距 */
+  position: absolute;
+  top: 11.5vh; /* 根據需要調整位置 */
+  right: 4.7vw;
+  cursor: pointer; /* 鼠標變成指針 */
 }
 
-.right-vol .volume_icon {
-  margin-right: 10px;
-  max-width: 22px;
-  height: auto;
+.volume_icon {
+  width: 22px;
+  height: 22px;
 }
-.right-vol .arrow_icon {
-  max-width: 20px;
-  height: auto;
+.back-button {
+  position: absolute;
+  top: 11.5vh;
+  right: 2.4vw; /* 左側位置 */
+  cursor: pointer;
 }
-/* Spline Viewer 定位與大小設置 */
-.spline-wrapper {
-  position: absolute; /* 使用絕對定位，控制在特定位置 */
-  top: -140px; /* 距離頂部 0px */
-  left: 380px; /* 水平居中 */
-  transform: translateX(-50%); /* 水平居中對齊 */
-  transform: scale(0.2); /* 放大模型 */
 
-  z-index: 0; /* 背景層，可根據需求調整 */
-  border: none; /* 如果需要外框，可設置邊框樣式 */
-
-  overflow: hidden; /* 確保內部內容不會超出範圍 */
-  z-index: 0; /* 背景層，可根據需求調整 */
+.back-button img {
+  width: 22px;
+  height: 22px;
 }
+
 .title {
   position: absolute;
   top: 55%; /* 往下移動，原本是 50%，現在調整為 55% */
@@ -206,52 +212,26 @@ body {
   animation: breathing 5s infinite; /* 保留動畫 */
 }
 
-/* 磁片樣式 */
-.disk {
-  position: absolute;
-  top: 42%; /* 磁片起始位置 */
-  left: 42%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0; /* 初始隱藏 */
-}
-
-/* 下載按鈕樣式 */
-.download-button {
-  display: none; /* 初始隱藏 */
-  position: absolute;
-  top: 90%; /* 根據需求調整位置 */
-  left: 48.5%;
-  transform: translate(-50%, -50%);
-  font-size: 16px;
-  color: rgb(39, 39, 39);
-  cursor: pointer;
-}
-
-/* 磁片圖片初始樣式 */
-.disk {
-  opacity: 0;
-  transform: scale(1);
-  transition: opacity 0.15s ease, transform 0.02s ease;
-}
-
-.disk.show {
-  opacity: 1;
-  transform: scale(2.56);
-}
-
-/* 下載按鈕初始樣式 */
+/* 下載50按鈕樣式 */
 .download-button {
   display: none;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: rgb(39, 39, 39);
+  cursor: pointer;
+
   opacity: 0;
   transition: opacity 1s ease;
   animation: breathing 5s infinite;
 }
 
+.download-button.show {
+  display: block;
+  opacity: 1;
+}
 @keyframes typing {
   from {
     width: 0;
@@ -331,4 +311,43 @@ span.tc_space {
   100% {
     opacity: 1;
   }
+}
+
+/* 磁片機圖片 */
+.disk-drive {
+  width: 20vw;
+  max-width: 400px; /* 限制最大寬度 */
+  height: auto;
+}
+
+/* 磁片樣式 */
+.disk {
+  position: absolute;
+  top: 48.9%;
+  left: 50%;
+
+  width: 200px;
+  height: 200px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.00015s ease;
+}
+
+.disk.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(2);
+}
+.spline-wrapper {
+  position: absolute; /* 絕對定位 */
+  top: 74.1vh;
+  left: 41.7vw;
+  scale: 0.85;
+  width: 924.8px; /* 固定寬度 */
+  height: 2000px; /* 固定高度 */
+  transform: translate(-50%, -50%); /* 水平垂直居中 */
+  overflow: hidden; /* 防止內容超出 */
 }

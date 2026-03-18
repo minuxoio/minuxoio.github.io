@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dynamic Barcode & Time</title>
     <link rel="stylesheet" href="css/floopy.css" />
-   
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"
+    ></script>
+  
   </head>
   <body>
 
@@ -27,14 +31,13 @@
       <div id="time-display">00:00:00</div>
 
       <!-- 磁片與下載按鈕 -->
-      <div class="disk-drive">
+     <div class="disk-drive">
        
-      </div>
-      <div class="disk" id="disk-image"></div>
-      <div class="download-button" onclick="downloadDiskImage()">
-        <h4>即刻下載你的專屬磁片</h4>
-      </div>
-
+     </div>
+     <div class="disk" id="disk-image"></div>
+     <div class="download-button" id="download-button" onclick="downloadDiskImage()">
+        &lt;&lt; 即刻下載你的專屬磁片 &gt;&gt;
+    </div>
       <!-- 底部版權資訊 -->
       <div class="bottom-left">
         <img src="./images/X (1).png" alt="Cross Placeholder" />
@@ -74,12 +77,13 @@
 
       <!-- 右下角標誌 -->
       <div class="logo">
-        <a href="index.html">
-          <img src="images/title.webp" />
-        </a>
+        <a href="index.html"><img
+          src="./images/title.webp"
+          alt="Logo Placeholder"
+          width="260"
+          height="auto"
+        /></a>
       </div>
-
-
     </div>
     <!-- 左側導航 -->
 
@@ -94,17 +98,16 @@
     <div class="nav-right">
       <img src="images/cornerLabel.svg" class="nav-image" />
     </div>
-    <div class="right-vol">
-      <!--border為邊框，cellpadding為圖片和表格的間距，cellspacing是邊框的間距-->
-      <table class="volume">
-        <tbody>
-          <tr>
-            <td><img src="images/icon_volume.svg" class="volume_icon" /></td>
-            <td><img src="images/icon_arrow.svg" class="arrow_icon" /></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+ <!-- 音量控制按鈕 -->
+<div class="right-vol">
+    <img id="volume-icon" src="images/icon_volume.svg" class="volume_icon" alt="Volume Icon" />
+  </div>
+  <!-- 返回按鈕 -->
+<div class="back-button">
+    <img id="back-icon" src="images/icon_back.png" alt="Back Button" />
+  </div>
+  
+
     <!-- 浮動提示文字 -->
 <div id="floating-text" class="floating-text">
     << Click The Disc Drive >>
@@ -114,10 +117,6 @@
   
   
   <!-- 新增磁片容器 -->
-  <div class="disk" id="disk-image"></div>
-  <div class="download-button" id="download-button" onclick="downloadDiskImage()">
-    即刻下載你的專屬磁片
-  </div>
  
   <script>
     document.addEventListener("DOMContentLoaded", function () {

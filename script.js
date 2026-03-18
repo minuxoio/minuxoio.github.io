@@ -2,29 +2,87 @@ window.onload = function () {
   generateBarcode();
   updateTime();
 
+  // 定義所有需要用到的 DOM 元素
   const floatingText = document.getElementById("floating-text");
   const diskImage = document.getElementById("disk-image");
   const downloadButton = document.getElementById("download-button");
   const diskDrive = document.getElementById("disk-drive");
+  const volumeIcon = document.getElementById("volume-icon");
+  const backIcon = document.getElementById("back-icon");
+
+  let isMuted = false; // 音量靜音狀態
+  const audio = new Audio("audio/test.mp3");
+  audio.loop = true;
+
+  // 用戶互動後播放音樂，確保瀏覽器允許
+  document.addEventListener("click", function playAudioOnce() {
+    audio
+      .play()
+      .then(() => {
+        console.log("音樂開始播放");
+      })
+      .catch((error) => {
+        console.error("音樂播放失敗:", error);
+      });
+    document.removeEventListener("click", playAudioOnce);
+  });
+
+  // 音量按鈕邏輯
+  if (volumeIcon) {
+    volumeIcon.addEventListener("click", () => {
+      isMuted = !isMuted;
+      audio.muted = isMuted;
+
+      // 切換圖示
+      volumeIcon.src = isMuted
+        ? "images/icon_mute.svg"
+        : "images/icon_volume.svg";
+      console.log(isMuted ? "音樂已靜音" : "音樂恢復播放");
+    });
+  }
+
+  // 返回按鈕邏輯
+  if (backIcon) {
+    backIcon.addEventListener("click", () => {
+      console.log("返回上一頁");
+      window.history.back();
+    });
+  }
 
   // 點擊磁碟機的事件
-  diskDrive.addEventListener("click", () => {
-    console.log("磁碟機被點擊");
+  if (diskDrive) {
+    diskDrive.addEventListener("click", () => {
+      console.log("磁碟機被點擊");
 
-    // 1. 浮動文字淡出
-    floatingText.classList.add("fade-out");
+      // 浮動文字淡出
+      if (floatingText) {
+        floatingText.style.animation = "none";
+        floatingText.style.opacity = "0";
+        floatingText.style.visibility = "hidden";
+        floatingText.style.display = "none";
+      }
 
-    // 2. 延遲 1 秒後顯示磁碟動畫
-    setTimeout(() => {
-      diskImage.classList.add("show");
-
-      // 3. 再延遲 1 秒顯示下載按鈕
+      // 顯示磁碟和下載按鈕
       setTimeout(() => {
-        downloadButton.classList.add("show");
-        console.log("下載按鈕已顯示");
+        diskImage.classList.add("show");
+        setTimeout(() => {
+          downloadButton.classList.add("show");
+          console.log("下載按鈕已顯示");
+        }, 1000);
       }, 1000);
-    }, 1000);
-  });
+    });
+  }
+
+  // 3D Viewer 點擊邏輯
+  const viewer = document.querySelector("spline-viewer");
+  if (viewer) {
+    viewer.addEventListener("pointerdown", () => {
+      console.log("3D 模型被點擊");
+      setTimeout(() => {
+        showImages();
+      }, 2397);
+    });
+  }
 };
 
 // 動態條碼生成
@@ -55,6 +113,18 @@ function updateTime() {
   }, 1000);
 }
 
+// 顯示圖片和按鈕
+function showImages() {
+  const diskImage = document.getElementById("disk-image");
+  const downloadButton = document.getElementById("download-button");
+  const diskNumber =
+    new URLSearchParams(window.location.search).get("disk") || "1";
+
+  diskImage.style.backgroundImage = `url('./images/qr${diskNumber}.png')`;
+  diskImage.classList.add("show");
+  downloadButton.classList.add("show");
+}
+
 // 下載磁碟圖片
 function downloadDiskImage() {
   const diskNumber =
@@ -64,61 +134,3 @@ function downloadDiskImage() {
   link.download = `qr${diskNumber}.png`;
   link.click();
 }
-// 點擊 3D Viewer 後觸發邏輯
-const viewer = document.querySelector("spline-viewer");
-const diskImage = document.getElementById("disk-image");
-const downloadButton = document.getElementById("download-button");
-
-// 偵測點擊 3D 模型
-viewer.addEventListener("pointerdown", () => {
-  console.log("3D 模型被點擊");
-
-  // 2.5 秒後顯示圖片和按鈕
-  setTimeout(() => {
-    showImages();
-  }, 2300); // 延遲 2.5 秒
-});
-
-// 顯示圖片和按鈕
-function showImages() {
-  // 取得磁片編號
-  const diskNumber =
-    new URLSearchParams(window.location.search).get("disk") || "1";
-
-  // 顯示對應的磁片圖片
-  diskImage.style.backgroundImage = `url('./images/qr${diskNumber}.png')`;
-  diskImage.classList.add("show");
-
-  // 顯示下載按鈕
-  downloadButton.classList.add("show");
-}
-
-// 下載圖片邏輯
-function downloadDiskImage() {
-  const diskNumber =
-    new URLSearchParams(window.location.search).get("disk") || "1";
-  const link = document.createElement("a");
-  link.href = `./images/qr${diskNumber}.png`;
-  link.download = `qr${diskNumber}.png`;
-  link.click();
-}
-const floatingText = document.getElementById("floating-text");
-const diskDrive = document.getElementById("disk-drive");
-
-diskDrive.addEventListener("click", () => {
-  console.log("磁碟機被點擊");
-
-  if (floatingText) {
-    // 1. 停止動畫
-    floatingText.style.animation = "none";
-    floatingText.style.webkitAnimation = "none"; // 兼容瀏覽器
-
-    // 2. 強制設置 opacity 和 display
-    floatingText.style.transition = "none"; // 移除任何過渡效果
-    floatingText.style.opacity = "0"; // 立即變為透明
-    floatingText.style.visibility = "hidden"; // 隱藏元素
-    floatingText.style.display = "none"; // 徹底移除元素
-
-    console.log("浮動文字已隱藏");
-  }
-});

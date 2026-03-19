@@ -1,39 +1,36 @@
 window.onload = function () {
-  generateBarcode();
-  updateTime();
+  // 1. 安全檢查：只有在 Floopy 頁面（找得到這些元素）才執行條碼和時間
+  if (document.querySelector(".barcode")) generateBarcode();
+  if (document.getElementById("time-display")) updateTime();
 
-  // 定義所有需要用到的 DOM 元素
-  const floatingText = document.getElementById("floating-text");
-  const diskImage = document.getElementById("disk-image");
-  const downloadButton = document.getElementById("download-button");
-  const diskDrive = document.getElementById("disk-drive");
+  // 2. 獲取共用的控制按鈕
   const volumeIcon = document.getElementById("volume-icon");
   const backIcon = document.getElementById("back-icon");
 
-  let isMuted = false; // 音量靜音狀態
-  const audio = new Audio("audio/test.mp3");
-  audio.loop = true;
+  // 3. 【智能音樂控制】判斷當前頁面該用哪種音樂
+  let bgm = document.getElementById("bgm"); // 先找 Boombox 的背景音樂
+  let isMuted = false;
 
-  // 用戶互動後播放音樂，確保瀏覽器允許
-  document.addEventListener("click", function playAudioOnce() {
-    audio
-      .play()
-      .then(() => {
-        console.log("音樂開始播放");
-      })
-      .catch((error) => {
-        console.error("音樂播放失敗:", error);
-      });
-    document.removeEventListener("click", playAudioOnce);
-  });
+  if (!bgm) {
+    // 如果找不到 #bgm，代表現在在 Floopy 頁面，那就動態生成音樂
+    bgm = new Audio("audio/test.mp3");
+    bgm.loop = true;
 
-  // 音量按鈕邏輯
-  if (volumeIcon) {
+    // Floopy 頁面需要用戶點擊畫面後才能開始播放
+    document.addEventListener("click", function playAudioOnce() {
+      bgm
+        .play()
+        .then(() => console.log("Floopy 音樂開始播放"))
+        .catch((e) => console.error("音樂播放失敗:", e));
+      document.removeEventListener("click", playAudioOnce);
+    });
+  }
+
+  // 音量靜音按鈕邏輯 (共用)
+  if (volumeIcon && bgm) {
     volumeIcon.addEventListener("click", () => {
       isMuted = !isMuted;
-      audio.muted = isMuted;
-
-      // 切換圖示
+      bgm.muted = isMuted;
       volumeIcon.src = isMuted
         ? "images/icon_mute.svg"
         : "images/icon_volume.svg";
@@ -41,20 +38,28 @@ window.onload = function () {
     });
   }
 
-  // 返回按鈕邏輯
+  // 返回按鈕邏輯 (共用)
   if (backIcon) {
     backIcon.addEventListener("click", () => {
-      console.log("返回上一頁");
       window.history.back();
     });
   }
 
-  // 點擊磁碟機的事件
+  // 4. Floopy 頁面專屬：磁碟機與下載邏輯
+  const floatingText = document.getElementById("floating-text");
+  const diskImage = document.getElementById("disk-image");
+  const downloadButton = document.getElementById("download-button");
+
+  // 【修復】使用 querySelector 同時支援 class 或 id 的寫法
+  const diskDrive =
+    document.querySelector(".disk-drive") ||
+    document.getElementById("disk-drive");
+
   if (diskDrive) {
     diskDrive.addEventListener("click", () => {
       console.log("磁碟機被點擊");
 
-      // 浮動文字淡出
+      // 隱藏浮動文字
       if (floatingText) {
         floatingText.style.animation = "none";
         floatingText.style.opacity = "0";
@@ -62,18 +67,17 @@ window.onload = function () {
         floatingText.style.display = "none";
       }
 
-      // 顯示磁碟和下載按鈕
+      // 顯示磁碟與按鈕
       setTimeout(() => {
-        diskImage.classList.add("show");
+        if (diskImage) diskImage.classList.add("show");
         setTimeout(() => {
-          downloadButton.classList.add("show");
-          console.log("下載按鈕已顯示");
+          if (downloadButton) downloadButton.classList.add("show");
         }, 1000);
       }, 1000);
     });
   }
 
-  // 3D Viewer 點擊邏輯
+  // 5. 3D Viewer 點擊邏輯
   const viewer = document.querySelector("spline-viewer");
   if (viewer) {
     viewer.addEventListener("pointerdown", () => {
@@ -85,10 +89,14 @@ window.onload = function () {
   }
 };
 
+// ================= 以下保留你原本的 Function 不變 =================
+
 // 動態條碼生成
 function generateBarcode() {
   const barcodeElement = document.querySelector(".barcode");
   const barcodeTextElement = document.querySelector(".barcode-text");
+  if (!barcodeElement || !barcodeTextElement) return;
+
   const visits = parseInt(localStorage.getItem("visitCount") || "0", 10) + 1;
   localStorage.setItem("visitCount", visits);
   barcodeTextElement.textContent = `Vis. ${visits.toString().padStart(6, "0")}`;
@@ -105,11 +113,12 @@ function generateBarcode() {
 
 // 動態時間更新
 function updateTime() {
+  const timeDisplay = document.getElementById("time-display");
+  if (!timeDisplay) return;
+
   setInterval(() => {
     const now = new Date();
-    document.getElementById("time-display").textContent = now
-      .toTimeString()
-      .split(" ")[0];
+    timeDisplay.textContent = now.toTimeString().split(" ")[0];
   }, 1000);
 }
 
@@ -120,9 +129,11 @@ function showImages() {
   const diskNumber =
     new URLSearchParams(window.location.search).get("disk") || "1";
 
-  diskImage.style.backgroundImage = `url('./images/qr${diskNumber}.png')`;
-  diskImage.classList.add("show");
-  downloadButton.classList.add("show");
+  if (diskImage) {
+    diskImage.style.backgroundImage = `url('./images/qr${diskNumber}.png')`;
+    diskImage.classList.add("show");
+  }
+  if (downloadButton) downloadButton.classList.add("show");
 }
 
 // 下載磁碟圖片

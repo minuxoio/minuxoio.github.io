@@ -35,12 +35,19 @@
         src="images/icon_volume.svg"
         class="volume_icon"
         alt="Volume Icon"
+        onclick="
+          var audio = document.getElementById('bgm');
+          audio.muted = !audio.muted;
+          this.src = audio.muted
+            ? 'images/icon_mute.svg'
+            : 'images/icon_volume.svg';
+        "
       />
     </div>
     <!-- 返回按鈕 -->
-    <div class="back-button">
+    <a href="index.html" class="back-button">
       <img id="back-icon" src="images/icon_back.png" alt="Back Button" />
-    </div>
+    </a>
     <div id="typewriter" class="typewriter-text">
       <div class="deco-text">
         <h4>

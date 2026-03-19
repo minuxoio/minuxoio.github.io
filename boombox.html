@@ -48,10 +48,14 @@
     <a
       href="index.html"
       class="back-button"
-      style="z-index: 999999 !important; position: absolute"
-      onclick="alert('按鈕活著！點擊成功！')"
+      style="z-index: 999999 !important; position: absolute; display: block"
     >
-      <img id="back-icon" src="images/icon_back.png" alt="Back Button" />
+      <img
+        id="back-icon"
+        src="images/icon_back.png"
+        alt="Back Button"
+        style="width: 22px; height: 22px"
+      />
     </a>
     <div id="typewriter" class="typewriter-text">
       <div class="deco-text">
@@ -155,6 +159,5 @@
         localStorage.setItem("bgmTime", bgm.currentTime);
       }, 1000);
     </script>
-    <script src="fordevice.js"></script>
   </body>
 </html>

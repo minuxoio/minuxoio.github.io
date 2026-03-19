@@ -35,6 +35,13 @@
         src="images/icon_volume.svg"
         class="volume_icon"
         alt="Volume Icon"
+        onclick="
+          var audio = document.getElementById('bgm');
+          audio.muted = !audio.muted;
+          this.src = audio.muted
+            ? 'images/icon_mute.svg'
+            : 'images/icon_volume.svg';
+        "
       />
     </div>
     <!-- 返回按鈕 -->

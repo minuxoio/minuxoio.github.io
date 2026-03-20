@@ -1,5 +1,5 @@
 window.onload = function () {
-  generateBarcode();
+  //generateBarcode();
   updateTime();
 
   // 定義所有需要用到的 DOM 元素
@@ -112,6 +112,7 @@ function updateTime() {
       .split(" ")[0];
   }, 1000);
 }
+updateTime();
 
 // 顯示圖片和按鈕
 function showImages() {

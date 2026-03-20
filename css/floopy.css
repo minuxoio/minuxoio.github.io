@@ -55,19 +55,34 @@ body {
 
 #time-display {
   position: absolute;
-  top: 2.5vh; /* 與視窗頂部的間距 */
-  left: 16vw; /* 與視窗右側的間距 */
+  bottom: 3.5vh; /* 與視窗頂部的間距 */
+  left: 2.5vw; /* 與視窗右側的間距 */
   font-size: 30px;
 }
 
-.bottom-left {
+.nav-left {
   position: absolute; /* 使用絕對定位，控制在特定位置 */
-  top: 57vh; /* 與視窗頂部的間距 */
-  margin-left: 2.5vw; /* 與視窗右側的間距 */
+  top: 5vh; /* 與視窗頂部的間距 */
+  margin-left: 2vw; /* 與視窗右側的間距 */
   font-size: 11px;
+  margin-top: 2.5vh; /* 與視窗頂部的間距 */
+  margin-left: 2.5vw; /* 與視窗右側的間距 */
+  font-weight: 500;
 }
 
-.text-right {
+.deco-text h4 {
+  display: inline-block;
+  text-align: right; /* 文字置右 */
+  font-size: 14px; /* 文字大小 */
+  line-height: 20px;
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  top: 30vh; /* 與視窗頂部的間距 */
+  right: 2vw; /* 與視窗右側的間距 */
+  animation: breathing 5s infinite;
+  color: #b4422b;
+}
+
+.deco-text p {
   display: inline-block;
   text-align: right; /* 文字置右 */
   font-size: 11px; /* 文字大小 */
@@ -80,8 +95,8 @@ body {
   white-space: nowrap;
   /* The cursor */
   /*border-right: 1px solid;
-      /* steps = number of characters */
-  animation: typing 8s steps(83) backwards;
+    /* steps = number of characters */
+  animation: typing 2s steps(22) backwards;
 }
 
 .logo {
@@ -97,10 +112,8 @@ body {
 }
 /* 左側導航樣式 */
 .runborder {
-  position: absolute; /* 使用絕對定位，脫離文檔流 */
-  top: 93.5%; /* 距離頂部 10% */
-  left: 2.5vw; /* 距離左側 2vw */
-  width: 10vw;
+  margin-top: 4vh; /* 與視窗頂部的間距 */
+  margin-left: 2.5vw; /* 與視窗右側的間距 */
 }
 
 .runborder .marquee-container {
@@ -110,7 +123,7 @@ body {
   border-radius: 25px;
   border-style: solid;
   border-color: black;
-  border-width: 2px;
+  border-width: 1.5px;
   font-size: 12px;
 }
 
@@ -216,7 +229,7 @@ body {
 .download-button {
   display: none;
   position: absolute;
-  top: 90%;
+  bottom: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 20px;
@@ -276,6 +289,7 @@ body {
 /* 浮動文字樣式 */
 
 .floating-text {
+  line-height: 35px;
   position: absolute;
   display: inline-block;
   top: 55%;
@@ -298,19 +312,6 @@ body {
 
 span.tc_space {
   letter-spacing: 10px; /* 字距調整 */
-}
-
-/* 呼吸效果動畫 */
-@keyframes breathing {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 /* 磁片機圖片 */

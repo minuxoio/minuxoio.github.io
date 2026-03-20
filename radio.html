@@ -29,16 +29,27 @@
     <div class="nav-right">
       <img src="images/cornerLabel.svg" class="nav-image" />
     </div>
+    <!-- 音量控制按鈕 -->
     <div class="right-vol">
-      <!--border為邊框，cellpadding為圖片和表格的間距，cellspacing是邊框的間距-->
-      <table class="volume">
-        <tbody>
-          <tr>
-            <td><img src="images/icon_volume.svg" class="volume_icon" /></td>
-            <td><img src="images/icon_arrow.svg" class="arrow_icon" /></td>
-          </tr>
-        </tbody>
-      </table>
+      <img
+        id="volume-icon"
+        src="images/icon_volume.svg"
+        class="volume_icon"
+        alt="Volume Icon"
+        onclick="
+          var audio = document.getElementById('bgm');
+          audio.muted = !audio.muted;
+          this.src = audio.muted
+            ? 'images/icon_mute.svg'
+            : 'images/icon_volume.svg';
+        "
+      />
+    </div>
+    <!-- 返回按鈕 -->
+    <div class="back-button" style="z-index: 999999 !important">
+      <a href="index.html" style="display: block">
+        <img id="back-icon" src="images/icon_back.png" alt="Back Button" />
+      </a>
     </div>
     <div id="typewriter" class="typewriter-text">
       <div class="deco-text">

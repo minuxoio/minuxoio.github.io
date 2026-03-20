@@ -35,11 +35,20 @@
         src="images/icon_volume.svg"
         class="volume_icon"
         alt="Volume Icon"
+        onclick="
+          var audio = document.getElementById('bgm');
+          audio.muted = !audio.muted;
+          this.src = audio.muted
+            ? 'images/icon_mute.svg'
+            : 'images/icon_volume.svg';
+        "
       />
     </div>
     <!-- 返回按鈕 -->
-    <div class="back-button">
-      <img id="back-icon" src="images/icon_back.png" alt="Back Button" />
+    <div class="back-button" style="z-index: 999999 !important">
+      <a href="index.html" style="display: block">
+        <img id="back-icon" src="images/icon_back.png" alt="Back Button" />
+      </a>
     </div>
     <div id="typewriter" class="typewriter-text">
       <div class="deco-text">
@@ -143,6 +152,5 @@
         localStorage.setItem("bgmTime", bgm.currentTime);
       }, 1000);
     </script>
-    <script src="script.js"></script>
   </body>
 </html>

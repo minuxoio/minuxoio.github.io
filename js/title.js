@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // 等待 2.5 秒，讓打字動畫播完再跳轉
         setTimeout(() => {
           window.location.href = pageUrl;
-        }, 2500);
+        }, 1000);
       } else if (pageUrl) {
         window.location.href = pageUrl; // 如果沒有 loading 元素，直接跳轉
       }

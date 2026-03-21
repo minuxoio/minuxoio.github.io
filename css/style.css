@@ -161,7 +161,7 @@ header.navigation {
   font-size: 18px; /* 標題字體大小基於視窗高度 */
   font-weight: 450;
   line-height: 35px;
-  margin-top: 70px; /* 額外距離 */
+  margin-top: 50px; /* 額外距離 */
   animation: breathing 5s infinite; /* 呼吸動畫：x秒循環 */
 }
 

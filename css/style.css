@@ -161,7 +161,7 @@ header.navigation {
   font-size: 18px; /* 標題字體大小基於視窗高度 */
   font-weight: 450;
   line-height: 35px;
-  margin-top: 30px; /* 額外距離 */
+  margin-top: 50px; /* 額外距離 */
   animation: breathing 5s infinite; /* 呼吸動畫：x秒循環 */
 }
 
@@ -226,7 +226,7 @@ span.tc_space {
   justify-content: center; /* 主軸居中 */
   align-items: center; /* 交叉軸居中 */
   width: 90vw;
-  height: 10vh; /* 設定高度 */
+  height: 12vh; /* 設定高度 */
   position: relative; /* 定位父容器 */
   gap: 0; /* 圖片之間間距 */
   scale: 0.8;

@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (loadingScreen && pageUrl) {
         loadingScreen.style.display = "flex"; // 顯示 Loading 畫面
 
-        // 等待 2.5 秒，讓打字動畫播完再跳轉
+        // 等待 1 秒，讓打字動畫播完再跳轉
         setTimeout(() => {
           window.location.href = pageUrl;
         }, 1000);

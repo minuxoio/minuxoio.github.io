@@ -150,7 +150,7 @@ header.navigation {
   display: flex;
   flex-direction: column; /* 確保垂直排列 */
   align-items: center; /* 元素居中對齊 */
-  width: 35vw; /* Logo 寬度為視窗寬度的 20% */
+  width: 40vw; /* Logo 寬度為視窗寬度的 20% */
   height: auto; /* 自動高度 */
   max-width: 700px; /* 最大寬度 */
   min-width: 400px; /* 最小寬度 */
@@ -161,7 +161,7 @@ header.navigation {
   font-size: 18px; /* 標題字體大小基於視窗高度 */
   font-weight: 450;
   line-height: 35px;
-  margin-top: 50px; /* 額外距離 */
+  margin-top: 70px; /* 額外距離 */
   animation: breathing 5s infinite; /* 呼吸動畫：x秒循環 */
 }
 
@@ -226,7 +226,7 @@ span.tc_space {
   justify-content: center; /* 主軸居中 */
   align-items: center; /* 交叉軸居中 */
   width: 90vw;
-  height: 12vh; /* 設定高度 */
+  height: 10vh; /* 設定高度 */
   position: relative; /* 定位父容器 */
   gap: 0; /* 圖片之間間距 */
   scale: 0.8;

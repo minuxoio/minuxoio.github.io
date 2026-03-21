@@ -9,9 +9,15 @@ body {
 }
 body {
   font-family: 
-    /* 英文字型優先順序 */ "Roboto Mono", "Helvetica", "Arial",
-    /* 中文字型優先順序 */ "Roboto Mono", "Noto Sans CJK TC", "PingFang TC",
-    "Microsoft JhengHei", /* 後備字型 */ sans-serif;
+    /* 英文字型優先順序 */
+    "Roboto Mono",
+    "Helvetica",
+    "Arial",
+    /* 中文字型優先順序 */ "Roboto Mono",
+    "Noto Sans CJK TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    /* 後備字型 */ sans-serif;
   background-color: #f9f9f9;
   /* <uniquifier>: Use a unique and descriptive class name*/
   /*<weight>: Use a value from 100 to 700*/
@@ -231,7 +237,9 @@ span.tc_space {
 /* 每個播放器樣式 */
 .player-item {
   flex: 0 0 20%; /* 總寬度的 12% */
-  transition: transform 0.5s ease, opacity 0.3s ease; /* 平滑過渡 */
+  transition:
+    transform 0.5s ease,
+    opacity 0.3s ease; /* 平滑過渡 */
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -282,7 +290,9 @@ span.tc_space {
   overflow: hidden; /* 超出範圍的文字隱藏 */
   border-right: 2px solid black; /* 模擬打字機游標 */
   width: 0; /* 初始寬度為 0 */
-  animation: typing 3s steps(9, end) infinite, blink 0.7s step-end infinite; /* 重設打字效果 */
+  animation:
+    typing 1s steps(9, end) infinite,
+    blink 0.7s step-end infinite; /* 重設打字效果 */
   animation-fill-mode: forwards; /* 動畫結束後保留狀態 */
 }
 

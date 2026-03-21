@@ -227,11 +227,10 @@ span.tc_space {
   align-items: center; /* 交叉軸居中 */
   width: 90vw;
   height: 10vh; /* 設定高度 */
-  margin-top: 30vh;
   position: relative; /* 定位父容器 */
   gap: 0; /* 圖片之間間距 */
   scale: 0.8;
-  bottom: -20vh;
+  bottom: -15vh;
   left: 10vw;
 }
 

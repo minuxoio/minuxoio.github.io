@@ -12,9 +12,12 @@ window.onload = function () {
   let isMuted = false;
 
   if (!bgm) {
-    // 如果找不到 #bgm，代表現在在 Floopy 頁面，那就動態生成音樂
+    // 動態生成音樂
     bgm = new Audio("audio/test.mp3");
     bgm.loop = true;
+
+    // 設定 Floopy 頁面的專屬音量 (0.2 代表 20%)
+    bgm.volume = 0.3;
 
     // Floopy 頁面需要用戶點擊畫面後才能開始播放
     document.addEventListener("click", function playAudioOnce() {

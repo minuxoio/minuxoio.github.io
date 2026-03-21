@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (bgm) {
     // 設定初始音量 (替代你原本寫錯的 myAudio)
-    bgm.volume = 0.5;
+    bgm.volume = 0.3;
 
     // 讀取上一頁儲存的播放時間，讓音樂無縫接軌
     const savedTime = localStorage.getItem("bgmTime");

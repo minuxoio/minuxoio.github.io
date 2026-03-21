@@ -138,19 +138,45 @@
     </audio>
 
     <script>
-      const bgm = document.getElementById("bgm");
-      const savedTime = localStorage.getItem("bgmTime");
+      document.addEventListener("DOMContentLoaded", function () {
+        const bgm = document.getElementById("bgm");
 
-      if (savedTime) {
-        bgm.currentTime = parseFloat(savedTime);
-      }
+        if (bgm) {
+          //  1. 在這裡設定這頁的專屬音量 (0.2 代表 20%)
+          bgm.volume = 0.3;
 
-      bgm.play();
+          //  2. 讀取上一頁的播放時間，無縫接軌
+          const savedTime = localStorage.getItem("bgmTime");
+          if (savedTime) {
+            bgm.currentTime = parseFloat(savedTime);
+          }
 
-      // 定時儲存當前播放時間
-      setInterval(() => {
-        localStorage.setItem("bgmTime", bgm.currentTime);
-      }, 1000);
+          //  3. 安全播放機制 (避免瀏覽器阻擋自動播放導致報錯)
+          let playPromise = bgm.play();
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.log("瀏覽器擋住自動播放了，等使用者點擊畫面...");
+            });
+          }
+
+          //  4. 定時儲存當前播放時間
+          setInterval(() => {
+            localStorage.setItem("bgmTime", bgm.currentTime);
+          }, 1000);
+
+          //  5. 如果被擋住，使用者隨便點擊畫面任何一處就會開始播
+          document.body.addEventListener(
+            "click",
+            function initAudio() {
+              if (bgm.paused) {
+                bgm.play();
+              }
+              document.body.removeEventListener("click", initAudio);
+            },
+            { once: true },
+          );
+        }
+      });
     </script>
   </body>
 </html>

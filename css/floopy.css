@@ -344,13 +344,13 @@ span.tc_space {
 }
 .spline-wrapper {
   position: absolute;
-  left: 50%; /* 【關鍵】絕對水平置中，解決展場偏左的問題 */
-  top: 70vh; /* 維持你原本「往下推」來隱藏上方空白的邏輯 */
+  left: 46%; /* 【關鍵】絕對水平置中，解決展場偏左的問題 */
+  top: 85vh; /* 維持你原本「往下推」來隱藏上方空白的邏輯 */
   width: 924.8px; /* 維持原本的固定寬度 */
   height: 2000px; /* 維持原本的超大高度，用來當作裁切遮罩 */
 
   /* 用 scale 來控制整體大小。如果在展場看起來太大，可以把 0.85 改成 0.75 或 0.7 */
-  transform: translate(-50%, -50%) scale(0.85);
+  transform: translate(-50%, -50%) scale(0.65);
 
   overflow: hidden;
 }

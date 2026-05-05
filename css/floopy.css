@@ -343,12 +343,11 @@ span.tc_space {
   transform: translate(-50%, -50%) scale(2);
 }
 .spline-wrapper {
-  position: absolute; /* 絕對定位 */
-  top: 77vh;
-  left: 41.7vw;
-  scale: 0.85;
-  width: 924.8px; /* 固定寬度 */
-  height: 2000px; /* 固定高度 */
-  transform: translate(-50%, -50%); /* 水平垂直居中 */
-  overflow: hidden; /* 防止內容超出 */
+  position: absolute;
+  top: 50%; /* 垂直完美置中 */
+  left: 50%; /* 水平完美置中 */
+  width: 100vw; /* 讓容器寬度隨視窗縮放 */
+  height: 100vh; /* 讓容器高度隨視窗縮放 */
+  transform: translate(-50%, -50%) scale(0.85); /* 確保以容器的中心點作為對齊基準 */
+  overflow: hidden;
 }

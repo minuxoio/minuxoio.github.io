@@ -334,7 +334,7 @@ span.tc_space {
   background-repeat: no-repeat;
   background-position: center;
 
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1.2);
   transition: transform 0.00015s ease;
 }
 
@@ -344,10 +344,13 @@ span.tc_space {
 }
 .spline-wrapper {
   position: absolute;
-  top: 50%; /* 垂直完美置中 */
-  left: 50%; /* 水平完美置中 */
-  width: 100vw; /* 讓容器寬度隨視窗縮放 */
-  height: 100vh; /* 讓容器高度隨視窗縮放 */
-  transform: translate(-50%, -50%) scale(0.85); /* 確保以容器的中心點作為對齊基準 */
+  left: 50%; /* 【關鍵】絕對水平置中，解決展場偏左的問題 */
+  top: 70vh; /* 維持你原本「往下推」來隱藏上方空白的邏輯 */
+  width: 924.8px; /* 維持原本的固定寬度 */
+  height: 2000px; /* 維持原本的超大高度，用來當作裁切遮罩 */
+
+  /* 用 scale 來控制整體大小。如果在展場看起來太大，可以把 0.85 改成 0.75 或 0.7 */
+  transform: translate(-50%, -50%) scale(0.85);
+
   overflow: hidden;
 }

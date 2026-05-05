@@ -344,7 +344,7 @@ span.tc_space {
 }
 .spline-wrapper {
   position: absolute; /* 絕對定位 */
-  top: 74.1vh;
+  top: 77vh;
   left: 41.7vw;
   scale: 0.85;
   width: 924.8px; /* 固定寬度 */
